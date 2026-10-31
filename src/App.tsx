@@ -1203,7 +1203,10 @@ export default function App() {
             </div>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-2 mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-sm text-slate-500 dark:text-slate-400">
-            <span>Built for students who want to remember what they learn.</span>
+            <span>
+              Built for students who want to remember what they learn. Free and{' '}
+              <a href="https://github.com/TKM649/RETENTION-MASTER" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-600 dark:hover:text-indigo-400">open source (GPL-3.0)</a>.
+            </span>
             <a href={FEEDBACK_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">
               <MessageSquare className="w-4 h-4" /> Send feedback
             </a>

@@ -15,6 +15,7 @@ A free, no-signup spaced repetition planner for students. Add a topic the day yo
 ![Vite](https://img.shields.io/badge/Vite-2-646CFF?logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?logo=tailwindcss&logoColor=white)
 ![Netlify](https://img.shields.io/badge/Hosted_on-Netlify-00C7B7?logo=netlify&logoColor=white)
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
 </div>
 
@@ -118,3 +119,9 @@ npm run build
 ## Feedback
 
 Found a bug or have an idea? Use the **Send feedback** link inside the app, or [open an issue](https://github.com/TKM649/RETENTION-MASTER/issues).
+
+## License
+
+Copyright (C) 2025-2026 Tarun Kumar.
+
+RetentionMaster is free software, released under the [GNU General Public License v3.0](LICENSE). You can use, study, share and change it. If you share a modified version, it must also be released under GPL-3.0 with its source code.
