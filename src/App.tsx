@@ -163,7 +163,7 @@ export default function App() {
       if (lastNotif !== todayStr) {
         new Notification('RetentionMaster 🧠', {
           body: `Aaj ${pendingToday.length} topic${pendingToday.length > 1 ? 's' : ''} revise karne hain!`,
-          icon: '/app-icon.png'
+          icon: import.meta.env.BASE_URL + 'app-icon.png'
         });
         localStorage.setItem(notifKey, todayStr);
       }
@@ -198,7 +198,7 @@ export default function App() {
           if ("Notification" in window && Notification.permission === 'granted') {
             new Notification('Revision Time! ⏰', {
               body: `"${t.text}" — Day ${t.intervalDay || '?'} revision`,
-              icon: '/app-icon.png'
+              icon: import.meta.env.BASE_URL + 'app-icon.png'
             });
           }
         }
