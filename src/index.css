@@ -6,3 +6,6 @@
   0% { transform: translate3d(0, -20%, 0); opacity: 1; }
   100% { transform: translate3d(0, 120vh, 0); opacity: 0; }
 }
+
+html { color-scheme: light; }
+html.dark { color-scheme: dark; }
