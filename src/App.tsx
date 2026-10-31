@@ -940,6 +940,28 @@ export default function App() {
           {quoteAuthor && <p className="text-sm text-indigo-200 mt-3">— {quoteAuthor}</p>}
         </div>
 
+        {/* First visit: explain the idea in three steps */}
+        {tasks.length === 0 && (
+          <div className={`${CARD_CLASS} p-5 md:p-6 mb-6`}>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-4">How it works</h2>
+            <ol className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                ['Add what you studied', 'Type the topic on the day you learn it.'],
+                ['We plan the revisions', 'Reviews land on Day 3, 7, 14, 24 and 30.'],
+                ['Revise what is due', 'Open the app daily and tick off today\'s list.'],
+              ].map(([title, text], i) => (
+                <li key={title} className="flex gap-3">
+                  <span className="w-8 h-8 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center flex-shrink-0">{i + 1}</span>
+                  <div>
+                    <p className="font-semibold text-slate-900 dark:text-white">{title}</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">{text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+
         {/* Add Task Form */}
         <div className={`${CARD_CLASS} p-5 md:p-6 mb-6`}>
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">Add a new topic</h2>
