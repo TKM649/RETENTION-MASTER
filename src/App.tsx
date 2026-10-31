@@ -758,7 +758,7 @@ export default function App() {
           {/* Calendar */}
           <div className="md:col-span-2 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="font-bold text-slate-900 flex items-center gap-2">
+              <h2 className="font-bold text-slate-900 flex items-center gap-2 whitespace-nowrap">
                 <Calendar className="w-4 h-4 text-indigo-600" />
                 {selectedDate.toLocaleString('default', { month: 'long', year: 'numeric' })}
               </h2>
@@ -830,9 +830,11 @@ export default function App() {
                 <h2 className="font-bold text-xl text-slate-900">
                   {isTodaySelected ? "Today's Plan" : selectedDate.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}
                 </h2>
-                <p className="text-sm text-slate-500">
-                  {completedCount}/{tasksForSelectedDate.length} done
-                </p>
+                {tasksForSelectedDate.length > 0 && (
+                  <p className="text-sm text-slate-500">
+                    {completedCount}/{tasksForSelectedDate.length} done
+                  </p>
+                )}
               </div>
             </div>
 
