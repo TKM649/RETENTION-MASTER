@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Calendar, CheckCircle, Plus, Flame, Brain, Trash2, Link as LinkIcon, Clock, X, MessageSquare, Bell, BellOff, StickyNote, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Sun, Moon, Download, Upload } from 'lucide-react';
+import { Calendar, CheckCircle, Plus, Flame, Brain, Trash2, Link as LinkIcon, Clock, X, MessageSquare, Bell, BellOff, StickyNote, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Sun, Moon, Download, Upload, Smartphone, Share } from 'lucide-react';
 
 // Alarm beep sound (short beep as base64 data URI — no external file needed)
 const ALARM_SOUND = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdH2LkZeYl5KNiIV/e3p6fYKIjpSXmJeTjomEf3t5eX2ChoySl5mYk46JhH97eXl9g4eOk5iZl5KNiIF9enp7f4WKkJWYmZaSjYeBfHl5fIGGjJKXmZiUj4qEfnt5en6DhoyRlpmYlI+KhH57eXp+g4eMkpeZmJSPioR+e3l6foOHjJKXmZiUj4qEfnt5en6Dh4yRl5mYk4+KhH97eXp+g4eMkpeZmJSPioR+e3l6foOHjJKXmZiUj4qEfnt5en6Dh4yRl5mYlI+KhH57eXp+g4eMkpeZmJSPioR+e3l6foOIjZOYmpiUj4qEfnt5en6DiI2TmJqYlI+KhH57eXp+g4iNk5iamJSPioR+e3l6foOIjZOYmpiUj4qEfnt5en6DiI2TmJqYlI+KhH57eXp+g4iNk5iamJSPi4V/e3p7f4SJj5SZmpiUkIuFgHx6e3+EiY+UmZqYlJCLhYB8ent/hImPlJmamJSQi4WAfHp7f4SJj5SZmpiUkIuFgHx6e3+EiY+UmZqYlI+KhH97enp+g4iNk5eZmJOOiYN+e3l6fYKHjJKXmJeTjomDfnt5en2Ch4yRl5iXk46Jg357eXp9goeMkpeYl5OOiYN+e3l6fYKHjJGXmJeTjomDfnt5en2Ch4ySl5iXk46Jg357eXl9goeMkpeYl5OOiIN9e3l5fYKGjJGXmJeTjYiDfXt5eX2ChoyRl5eXk42Ig317eXl9goaMkZeXl5ONiIN9e3l5fYKGjJGXl5eTjYiDfXt5eX2ChoyRl5eXk42Ig317eXl9goaMkZeXl5ONiIN9e3l5fYKGjJGXl5eTjYiDfXt5eX2ChoyRl5eXk42Ig317eXl9goaMkZeXl5ONiIN9e3l5fYKGjJGXl5eTjYiDfXt5eX2ChoyRl5eXk42Ig357eXp9goeMkpeYl5OOiYN+e3l6fYKHjJKXmJeTjomDfnt5en2Ch4yRl5iXk46Jg357eXp9goeMkpeYl5OOiYN+e3l6fYKHjJGXmJeTjomDfnt5en2Ch4ySl5iXk46Jg357eXl8gYWLkJWXl5KMh4J8enh5fIGFi5CVl5eSjIeCfHp4eXyBhYuQlZeXkoyHgnx6eHl8gYWLkJWXl5KMh4J8enh5fIGFi5CVl5eSjIeCfHp4eXyBhYuQlZeXkoyHgnx6eHl8gYWLkJWXl5KNh4J9enh6fIGGi5GWmJeTjYiDfXt5eX2ChoyRl5iXk46Ig357eXl9goaMkZeYl5OOiIN9e3l5fYKGjJGXmJeTjomDfnt5en2Ch4yRl5iXk46Jg357eXp9goeMkpeYl5OOiYN+e3l6fYKHjJKXmJeTjomEfnt5en2Ch4yRl5iXk46Jg357eXp9goeMkpeYl5OOiYN+e3l6fYKHjJKXmJeTjomEfnt5en6DiI2TmJqYlI+KhH57eXp+g4iNk5iamJSPi4V/fHp7f4SJj5SZmpiUkIuFgHx6e3+EiY+UmZqYlJCLhYB8ent/hImPlJmamJSQi4WAfHp7f4SJj5SZmpiUkIuFgHx6e3+EiY+UmZqYlJCLhYB8ent/hImPlJmamJSQi4WAfHt7f4SJj5WZmpiVkIuGgHx7fICFipCVmpqZlZCLhoB8e3yAhYqQlZqamZWQi4aAfHt8gIWKkJWampmVkIuGgHx7fICFipCVmpmZlI+LhX97enp+g4iNk5iZmJOOiYN+e3l6fYKHjJKXmZiTjomDfnt5en2ChoyRl5mYk46Jg357eXp9goaMkpeZmJOOiYN+e3l6fYKHjJKXmZiTjomDfnt5en2Ch4ySl5mYk46Jg357eXp9goeMkpeZmJSPioR+e3l6foOHjJKXmZiUj4qEfnt5en6Dh4yRl5mYlI+KhH57eXp+g4eMkpeZmJSPioR+e3l6foOHjJKXmZiUj4qEfnt5en6Dh4yRl5mYlI+KhH57eXp+g4eMkpeZmJSPioR+e3l6foOHjJKXmZiUj4qEfnt5en6Dh4yRl5mYlI+KhH57eXp+g4eMkw==';
@@ -74,6 +74,16 @@ interface Task {
 }
 
 type Theme = 'light' | 'dark';
+
+// Chrome/Edge/Android fire this event when the app can be installed
+interface BeforeInstallPromptEvent extends Event {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+}
+
+const isStandalone = () =>
+  window.matchMedia('(display-mode: standalone)').matches || (navigator as any).standalone === true;
+const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent);
 type NotifState = NotificationPermission | 'unsupported';
 
 // Only http(s) links are allowed, so a pasted or imported "javascript:" URL can never run code
@@ -182,6 +192,11 @@ export default function App() {
   const importInputRef = useRef<HTMLInputElement>(null);
   const [backupMessage, setBackupMessage] = useState('');
 
+  // Install-to-home-screen prompt
+  const [installEvent, setInstallEvent] = useState<BeforeInstallPromptEvent | null>(null);
+  const [installDismissed, setInstallDismissed] = useState(() => readStorage('rm_install_dismissed') === '1');
+  const [installed, setInstalled] = useState(isStandalone);
+
   // Track which tasks have already been notified this session (avoid repeat alarms)
   const notifiedTaskIds = useRef<Set<string>>(new Set());
 
@@ -284,6 +299,39 @@ export default function App() {
       }
     };
   }, []);
+
+  useEffect(() => {
+    const onPrompt = (e: Event) => {
+      e.preventDefault();
+      setInstallEvent(e as BeforeInstallPromptEvent);
+    };
+    const onInstalled = () => {
+      setInstalled(true);
+      setInstallEvent(null);
+    };
+    window.addEventListener('beforeinstallprompt', onPrompt);
+    window.addEventListener('appinstalled', onInstalled);
+    return () => {
+      window.removeEventListener('beforeinstallprompt', onPrompt);
+      window.removeEventListener('appinstalled', onInstalled);
+    };
+  }, []);
+
+  const installApp = async () => {
+    if (!installEvent) return;
+    await installEvent.prompt();
+    const { outcome } = await installEvent.userChoice;
+    if (outcome === 'accepted') setInstalled(true);
+    setInstallEvent(null);
+  };
+
+  const dismissInstall = () => {
+    setInstallDismissed(true);
+    writeStorage('rm_install_dismissed', '1');
+  };
+
+  // Android/desktop get a one-tap button; iPhone needs Safari's Share menu, so we show the steps
+  const showInstallCard = !installed && !installDismissed && (installEvent !== null || isIOS());
 
   const toggleTheme = () => {
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
@@ -813,6 +861,40 @@ export default function App() {
             </div>
           </div>
         </header>
+
+        {/* Install to home screen */}
+        {showInstallCard && (
+          <div className="rounded-xl p-4 mb-6 flex items-center gap-3 border bg-indigo-50 border-indigo-200 dark:bg-indigo-950/60 dark:border-indigo-900">
+            <Smartphone className="w-6 h-6 text-indigo-600 dark:text-indigo-400 flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <p className="font-bold text-indigo-900 dark:text-indigo-100">Add RetentionMaster to your home screen</p>
+              {installEvent ? (
+                <p className="text-sm text-indigo-800 dark:text-indigo-300">Opens like a normal app, one tap away. Free, no sign-up.</p>
+              ) : (
+                <p className="text-sm text-indigo-800 dark:text-indigo-300">
+                  In Safari, tap <Share className="inline w-4 h-4 -mt-1" aria-label="Share" /> Share, then <span className="font-semibold">Add to Home Screen</span>.
+                </p>
+              )}
+            </div>
+            {installEvent && (
+              <button
+                type="button"
+                onClick={installApp}
+                className="text-sm font-semibold bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-lg flex-shrink-0"
+              >
+                Install
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={dismissInstall}
+              aria-label="Dismiss install suggestion"
+              className="p-1 rounded text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-200 flex-shrink-0"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        )}
 
         {/* Today's Pending Revisions Alert Banner */}
         {(todayTasks.length > 0 || overdueTasks.length > 0) && (

@@ -23,6 +23,32 @@ A free, no-signup spaced repetition planner for students. Add a topic the day yo
   <img src="docs/screenshots/desktop-dark.png" alt="RetentionMaster in dark mode" width="49%" />
 </p>
 
+## Get the app in 30 seconds
+
+No download from a store, no sign-up, no payment.
+
+**On an Android phone**
+
+1. Open **[retention-master.netlify.app](https://retention-master.netlify.app)** in Chrome.
+2. Tap the blue **Install** button at the top of the app.
+3. Done. RetentionMaster is now on your home screen like any other app.
+
+**On an iPhone**
+
+1. Open **[retention-master.netlify.app](https://retention-master.netlify.app)** in **Safari**.
+2. Tap the **Share** button (the square with an arrow), then **Add to Home Screen**.
+3. Done.
+
+**Didn't see the Install button?** Tap Chrome's **⋮** menu and choose **Install app** or **Add to Home screen**.
+
+Once installed, the app also opens without internet.
+
+<p align="center">
+  <img src="docs/screenshots/mobile.png" alt="Mobile view" width="260" />
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/mobile-dark.png" alt="Mobile calendar in dark mode" width="260" />
+</p>
+
 ## Why spaced repetition?
 
 Most of what we study is forgotten within days unless we review it. Reviewing at growing intervals (a few days, then a week, then a few weeks) moves knowledge into long-term memory with far less total study time than cramming.
@@ -49,19 +75,7 @@ The hard part is remembering *when* to review. RetentionMaster handles that for 
 | Daily streak | Counts consecutive days with every revision done |
 | Light and dark mode | Follows your device, or switch with one tap |
 | Backup and restore | Export your data to a file and import it on any device |
-| Installable app | Add it to your phone's home screen like a native app |
-
-## Install it on your phone
-
-**Android (Chrome):** open the app, tap the **⋮** menu, then **Install app** (or **Add to Home screen**).
-
-**iPhone (Safari):** open the app, tap **Share**, then **Add to Home Screen**.
-
-<p align="center">
-  <img src="docs/screenshots/mobile.png" alt="Mobile view" width="260" />
-  &nbsp;&nbsp;
-  <img src="docs/screenshots/mobile-dark.png" alt="Mobile calendar in dark mode" width="260" />
-</p>
+| Installable app | One-tap install to your home screen, works offline |
 
 ## Privacy
 
@@ -93,7 +107,7 @@ npm run build
 
 ```
 ├── index.html          # Page shell, theme script, PWA links
-├── public/             # App icons and web app manifest
+├── public/             # App icons, web app manifest, offline service worker
 ├── src/
 │   ├── App.tsx         # The whole app: state, scheduling logic and UI
 │   ├── index.css       # Tailwind entry and small global styles
